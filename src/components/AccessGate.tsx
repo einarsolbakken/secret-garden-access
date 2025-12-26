@@ -7,7 +7,7 @@ interface AccessGateProps {
   onAccessGranted: () => void;
 }
 
-const ACCESS_CODE = "EXCLUSIVE2024";
+const ACCESS_CODE = "TEST";
 
 const AccessGate = ({ onAccessGranted }: AccessGateProps) => {
   const [code, setCode] = useState("");
@@ -91,11 +91,6 @@ const AccessGate = ({ onAccessGranted }: AccessGateProps) => {
               <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
             </Button>
           </form>
-
-          {/* Hint */}
-          <p className="text-center text-muted-foreground/60 text-xs mt-8 tracking-wide">
-            Hint: EXCLUSIVE2024
-          </p>
         </div>
 
         {/* Decorative elements */}
