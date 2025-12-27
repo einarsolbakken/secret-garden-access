@@ -8,13 +8,13 @@ interface ProtectedContentProps {
 
 const ProtectedContent = ({ onLogout }: ProtectedContentProps) => {
   const timelineEvents = [
-    { time: "10:00", title: "Julemorgen", description: "Våkne opp og åpne første gave! ☕", icon: "🌅" },
-    { time: "12:00", title: "Julelunsj", description: "Tradisjonell risgrøt med mandel 🍚", icon: "🍽️" },
-    { time: "14:00", title: "Familietid", description: "Spill og moro med hele familien 🎲", icon: "👨‍👩‍👧‍👦" },
-    { time: "16:00", title: "Juleeventyr", description: "Les juleeventyr sammen ved peisen 📖", icon: "🔥" },
-    { time: "18:00", title: "Julemiddag", description: "Pinnekjøtt og alt tilbehør 🍖", icon: "🦌" },
-    { time: "20:00", title: "Pakkeåpning", description: "Endelig tid for alle gavene! 🎁", icon: "🎄" },
-    { time: "22:00", title: "Kveldskos", description: "Julefilm og sjokolade 🍫", icon: "🎬" },
+    { time: "10:00", title: "Julemorgen", description: "Våkne opp og åpne første gave! ☕", icon: "🌅", backInfo: "Start dagen med kaffe og juleboller mens barna åpner en liten gave hver." },
+    { time: "12:00", title: "Julelunsj", description: "Tradisjonell risgrøt med mandel 🍚", icon: "🍽️", backInfo: "Den som finner mandelen får marsipangris! Husk å sjekke at alle har fått smake." },
+    { time: "14:00", title: "Familietid", description: "Spill og moro med hele familien 🎲", icon: "👨‍👩‍👧‍👦", backInfo: "Yatzy-turnering og kortspill. Vinneren får velge første gave!" },
+    { time: "16:00", title: "Juleeventyr", description: "Les juleeventyr sammen ved peisen 📖", icon: "🔥", backInfo: "Snekker Andersen og Reisen til Julestjernen står på programmet." },
+    { time: "18:00", title: "Julemiddag", description: "Pinnekjøtt og alt tilbehør 🍖", icon: "🦌", backInfo: "Pinnekjøtt med kålrotstappe, poteter og saus. Dessert: Multekrem!" },
+    { time: "20:00", title: "Pakkeåpning", description: "Endelig tid for alle gavene! 🎁", icon: "🎄", backInfo: "Yngste deler ut gaver! Ta bilder av alle som åpner sine." },
+    { time: "22:00", title: "Kveldskos", description: "Julefilm og sjokolade 🍫", icon: "🎬", backInfo: "Alene hjemme eller Grevinnen og hovmesteren? Stem med håndsopprekking!" },
   ];
 
   return (
@@ -89,13 +89,24 @@ const ProtectedContent = ({ onLogout }: ProtectedContentProps) => {
                   }`}
                   style={{ animationDelay: `${0.4 + index * 0.1}s` }}
                 >
-                  {/* Content card */}
+                  {/* Content card with flip effect */}
                   <div className={`flex-1 ${index % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
-                    <div className="glass-card rounded-2xl p-6 hover:border-primary/40 transition-all duration-300 group inline-block w-full md:max-w-sm">
-                      <div className="text-3xl mb-3">{event.icon}</div>
-                      <div className="text-primary font-medium text-lg mb-1">{event.time}</div>
-                      <h3 className="font-display text-xl text-foreground mb-2">{event.title}</h3>
-                      <p className="text-muted-foreground text-sm">{event.description}</p>
+                    <div className="perspective-1000 inline-block w-full md:max-w-sm">
+                      <div className="relative w-full h-48 transition-transform duration-500 transform-style-3d group hover:rotate-y-180">
+                        {/* Front of card */}
+                        <div className="absolute inset-0 glass-card rounded-2xl p-6 backface-hidden">
+                          <div className="text-3xl mb-3">{event.icon}</div>
+                          <div className="text-primary font-medium text-lg mb-1">{event.time}</div>
+                          <h3 className="font-display text-xl text-foreground mb-2">{event.title}</h3>
+                          <p className="text-muted-foreground text-sm">{event.description}</p>
+                        </div>
+                        {/* Back of card */}
+                        <div className="absolute inset-0 glass-card rounded-2xl p-6 backface-hidden rotate-y-180 bg-primary/20 border-primary/40 flex flex-col justify-center">
+                          <div className="text-2xl mb-3 text-center">📋</div>
+                          <h4 className="font-display text-lg text-primary mb-2 text-center">Detaljer</h4>
+                          <p className="text-foreground text-sm text-center leading-relaxed">{event.backInfo}</p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                   
