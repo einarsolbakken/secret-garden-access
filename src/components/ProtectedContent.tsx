@@ -38,26 +38,26 @@ const ProtectedContent = ({ onLogout }: ProtectedContentProps) => {
       
       {/* Background effects */}
       <div className="absolute inset-0 gradient-festive" />
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[150px]" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-accent/10 rounded-full blur-[100px]" />
+      <div className="absolute top-0 right-0 w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-primary/10 rounded-full blur-[100px] md:blur-[150px]" />
+      <div className="absolute bottom-0 left-0 w-[200px] h-[200px] md:w-[400px] md:h-[400px] bg-accent/10 rounded-full blur-[80px] md:blur-[100px]" />
       
-      {/* Christmas decorations */}
-      <div className="absolute top-20 left-10 text-3xl opacity-60 animate-pulse">✨</div>
-      <div className="absolute top-40 right-20 text-2xl opacity-50">🌟</div>
-      <div className="absolute bottom-40 left-20 text-2xl opacity-50">❄️</div>
+      {/* Christmas decorations - hidden on very small screens */}
+      <div className="absolute top-20 left-4 md:left-10 text-2xl md:text-3xl opacity-60 animate-pulse">✨</div>
+      <div className="absolute top-40 right-4 md:right-20 text-xl md:text-2xl opacity-50">🌟</div>
+      <div className="absolute bottom-40 left-4 md:left-20 text-xl md:text-2xl opacity-50 hidden sm:block">❄️</div>
       
       {/* Header */}
-      <header className="relative z-10 border-b border-border/30">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="text-3xl">🎄</div>
-            <span className="font-display text-xl font-medium text-foreground">Julaften 2024</span>
+      <header className="relative z-10 border-b border-border/30 sticky top-0 bg-background/80 backdrop-blur-md">
+        <div className="container mx-auto px-3 sm:px-4 py-3 sm:py-4 flex items-center justify-between">
+          <div className="flex items-center gap-2 sm:gap-3">
+            <div className="text-2xl sm:text-3xl">🎄</div>
+            <span className="font-display text-lg sm:text-xl font-medium text-foreground">Julaften 2024</span>
           </div>
           <Button
             variant="ghost"
             size="sm"
             onClick={onLogout}
-            className="text-muted-foreground hover:text-foreground hover:bg-secondary/50 gap-2"
+            className="text-muted-foreground hover:text-foreground hover:bg-secondary/50 gap-1 sm:gap-2 px-2 sm:px-3"
           >
             <LogOut className="w-4 h-4" />
             <span className="hidden sm:inline">Logg ut</span>
@@ -66,72 +66,72 @@ const ProtectedContent = ({ onLogout }: ProtectedContentProps) => {
       </header>
 
       {/* Main content */}
-      <main className="relative z-10 container mx-auto px-4 py-16 md:py-24">
+      <main className="relative z-10 container mx-auto px-3 sm:px-4 py-8 sm:py-16 md:py-24">
         {/* Hero section */}
-        <div className="max-w-3xl mx-auto text-center mb-20 opacity-0 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/10 text-primary text-sm mb-8">
-            <Gift className="w-4 h-4" />
+        <div className="max-w-3xl mx-auto text-center mb-12 sm:mb-20 opacity-0 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+          <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-primary/30 bg-primary/10 text-primary text-xs sm:text-sm mb-4 sm:mb-8">
+            <Gift className="w-3 h-3 sm:w-4 sm:h-4" />
             <span>God Jul! 🎅</span>
           </div>
           
-          <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-medium text-foreground mb-6 leading-tight">
+          <h1 className="font-display text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-medium text-foreground mb-4 sm:mb-6 leading-tight px-2">
             Velkommen til
             <span className="block text-gradient">Julaften 2024 🎄</span>
           </h1>
           
-          <p className="text-muted-foreground text-lg md:text-xl max-w-xl mx-auto leading-relaxed">
+          <p className="text-muted-foreground text-base sm:text-lg md:text-xl max-w-xl mx-auto leading-relaxed px-4">
             Her er programmet for årets julefeiring med familien!
           </p>
         </div>
 
         {/* Timeline section */}
-        <div className="max-w-4xl mx-auto mb-20">
-          <h2 className="font-display text-3xl md:text-4xl text-center text-foreground mb-12 opacity-0 animate-fade-in" style={{ animationDelay: '0.3s' }}>
+        <div className="max-w-4xl mx-auto mb-12 sm:mb-20">
+          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-center text-foreground mb-8 sm:mb-12 opacity-0 animate-fade-in" style={{ animationDelay: '0.3s' }}>
             Årets Juleprogram 🎄
           </h2>
           
           <div className="relative">
-            {/* Vertical line */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-primary via-accent to-primary rounded-full hidden md:block" />
+            {/* Vertical line - left on mobile, center on desktop */}
+            <div className="absolute left-6 sm:left-1/2 sm:transform sm:-translate-x-1/2 w-0.5 sm:w-1 h-full bg-gradient-to-b from-primary via-accent to-primary rounded-full" />
             
             {/* Timeline events */}
-            <div className="space-y-8 md:space-y-12">
+            <div className="space-y-6 sm:space-y-8 md:space-y-12">
               {timelineEvents.map((event, index) => (
                 <div
                   key={index}
-                  className={`flex flex-col md:flex-row items-center gap-4 md:gap-8 opacity-0 animate-fade-in ${
+                  className={`flex items-start sm:items-center gap-4 sm:gap-6 md:gap-8 opacity-0 animate-fade-in ${
                     index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
                   }`}
                   style={{ animationDelay: `${0.4 + index * 0.1}s` }}
                 >
+                  {/* Center dot - left aligned on mobile */}
+                  <div className="relative z-10 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-card border-3 sm:border-4 border-primary flex items-center justify-center shadow-christmas flex-shrink-0 md:order-2 md:mx-0">
+                    <span className="text-lg sm:text-xl">{event.icon}</span>
+                  </div>
+                  
                   {/* Content card with flip effect */}
-                  <div className={`flex-1 ${index % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
-                    <div className="perspective-1000 inline-block w-full md:max-w-sm cursor-pointer">
-                      <div className="flip-card relative w-full h-48 transform-style-3d">
+                  <div className={`flex-1 md:order-1 ${index % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
+                    <div className="perspective-1000 w-full md:max-w-sm md:inline-block cursor-pointer">
+                      <div className="flip-card relative w-full h-40 sm:h-48 transform-style-3d">
                         {/* Front of card */}
-                        <div className="absolute inset-0 glass-card rounded-2xl p-6 backface-hidden">
-                          <div className="text-3xl mb-3">{event.icon}</div>
-                          <div className="text-primary font-medium text-lg mb-1">{event.time}</div>
-                          <h3 className="font-display text-xl text-foreground mb-2">{event.title}</h3>
-                          <p className="text-muted-foreground text-sm">{event.description}</p>
+                        <div className="absolute inset-0 glass-card rounded-xl sm:rounded-2xl p-4 sm:p-6 backface-hidden">
+                          <div className="text-2xl sm:text-3xl mb-2 sm:mb-3">{event.icon}</div>
+                          <div className="text-primary font-medium text-base sm:text-lg mb-1">{event.time}</div>
+                          <h3 className="font-display text-lg sm:text-xl text-foreground mb-1 sm:mb-2">{event.title}</h3>
+                          <p className="text-muted-foreground text-xs sm:text-sm line-clamp-2">{event.description}</p>
                         </div>
                         {/* Back of card */}
-                        <div className="absolute inset-0 glass-card rounded-2xl p-6 backface-hidden rotate-y-180 bg-primary/20 border-primary/40 flex flex-col justify-center">
-                          <div className="text-2xl mb-3 text-center">📋</div>
-                          <h4 className="font-display text-lg text-primary mb-2 text-center">Detaljer</h4>
-                          <p className="text-foreground text-sm text-center leading-relaxed">{event.backInfo}</p>
+                        <div className="absolute inset-0 glass-card rounded-xl sm:rounded-2xl p-4 sm:p-6 backface-hidden rotate-y-180 bg-primary/20 border-primary/40 flex flex-col justify-center">
+                          <div className="text-xl sm:text-2xl mb-2 sm:mb-3 text-center">📋</div>
+                          <h4 className="font-display text-base sm:text-lg text-primary mb-1 sm:mb-2 text-center">Detaljer</h4>
+                          <p className="text-foreground text-xs sm:text-sm text-center leading-relaxed">{event.backInfo}</p>
                         </div>
                       </div>
                     </div>
                   </div>
                   
-                  {/* Center dot */}
-                  <div className="relative z-10 w-12 h-12 rounded-full bg-card border-4 border-primary flex items-center justify-center shadow-christmas">
-                    <span className="text-xl">{event.icon}</span>
-                  </div>
-                  
-                  {/* Spacer for alternating layout */}
-                  <div className="flex-1 hidden md:block" />
+                  {/* Spacer for alternating layout - desktop only */}
+                  <div className="flex-1 hidden md:block md:order-3" />
                 </div>
               ))}
             </div>
@@ -139,7 +139,7 @@ const ProtectedContent = ({ onLogout }: ProtectedContentProps) => {
         </div>
 
         {/* Feature cards */}
-        <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 max-w-4xl mx-auto">
           {[
             {
               id: "arkiv",
@@ -159,46 +159,46 @@ const ProtectedContent = ({ onLogout }: ProtectedContentProps) => {
             <div
               key={feature.id}
               onClick={() => setExpandedCard(expandedCard === feature.id ? null : feature.id)}
-              className={`glass-card rounded-2xl p-8 opacity-0 animate-fade-in cursor-pointer transition-all duration-500 group
+              className={`glass-card rounded-xl sm:rounded-2xl p-5 sm:p-8 opacity-0 animate-fade-in cursor-pointer transition-all duration-500 group
                 ${expandedCard === feature.id 
-                  ? 'md:col-span-2 border-primary/50 bg-primary/5' 
+                  ? 'sm:col-span-2 border-primary/50 bg-primary/5' 
                   : 'hover:border-primary/40'
                 }`}
               style={{ animationDelay: feature.delay }}
             >
-              <div className="flex items-start justify-between">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary/20 transition-colors flex-shrink-0">
-                    <feature.icon className="w-6 h-6 text-primary" />
+              <div className="flex items-start justify-between gap-3">
+                <div className="flex items-start gap-3 sm:gap-4">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary/20 transition-colors flex-shrink-0">
+                    <feature.icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
                   </div>
                   <div>
-                    <h3 className="font-display text-xl font-medium text-foreground mb-2">
+                    <h3 className="font-display text-lg sm:text-xl font-medium text-foreground mb-1 sm:mb-2">
                       {feature.title}
                     </h3>
-                    <p className="text-muted-foreground text-sm leading-relaxed">
+                    <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed">
                       {feature.description}
                     </p>
                   </div>
                 </div>
-                <div className={`transition-transform duration-300 ${expandedCard === feature.id ? 'rotate-180' : ''}`}>
+                <div className={`transition-transform duration-300 flex-shrink-0 ${expandedCard === feature.id ? 'rotate-180' : ''}`}>
                   {expandedCard === feature.id ? (
-                    <X className="w-5 h-5 text-muted-foreground" />
+                    <X className="w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground" />
                   ) : (
-                    <ChevronDown className="w-5 h-5 text-muted-foreground" />
+                    <ChevronDown className="w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground" />
                   )}
                 </div>
               </div>
               
               {/* Expanded content */}
               <div className={`overflow-hidden transition-all duration-500 ${
-                expandedCard === feature.id ? 'max-h-[800px] opacity-100 mt-8' : 'max-h-0 opacity-0'
+                expandedCard === feature.id ? 'max-h-[800px] opacity-100 mt-4 sm:mt-8' : 'max-h-0 opacity-0'
               }`}>
                 {feature.id === "faq" && (
-                  <div className="space-y-4">
+                  <div className="space-y-3 sm:space-y-4">
                     {faqItems.map((item, i) => (
-                      <div key={i} className="glass-card rounded-xl p-4 bg-background/50">
-                        <p className="text-primary font-medium mb-2">❓ {item.q}</p>
-                        <p className="text-foreground text-sm">{item.a}</p>
+                      <div key={i} className="glass-card rounded-lg sm:rounded-xl p-3 sm:p-4 bg-background/50">
+                        <p className="text-primary font-medium mb-1 sm:mb-2 text-sm sm:text-base">❓ {item.q}</p>
+                        <p className="text-foreground text-xs sm:text-sm">{item.a}</p>
                       </div>
                     ))}
                   </div>
@@ -206,18 +206,18 @@ const ProtectedContent = ({ onLogout }: ProtectedContentProps) => {
                 
                 {feature.id === "arkiv" && (
                   <div>
-                    <p className="text-muted-foreground mb-4 text-sm">Minner fra julefeiringen i fjor:</p>
-                    <div className="grid grid-cols-4 md:grid-cols-8 gap-3">
+                    <p className="text-muted-foreground mb-3 sm:mb-4 text-xs sm:text-sm">Minner fra julefeiringen i fjor:</p>
+                    <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-2 sm:gap-3">
                       {archiveImages.map((emoji, i) => (
                         <div 
                           key={i} 
-                          className="aspect-square glass-card rounded-xl flex items-center justify-center text-3xl hover:scale-110 transition-transform cursor-pointer bg-background/30"
+                          className="aspect-square glass-card rounded-lg sm:rounded-xl flex items-center justify-center text-xl sm:text-3xl hover:scale-110 transition-transform cursor-pointer bg-background/30"
                         >
                           {emoji}
                         </div>
                       ))}
                     </div>
-                    <p className="text-muted-foreground mt-4 text-xs text-center italic">
+                    <p className="text-muted-foreground mt-3 sm:mt-4 text-xs text-center italic">
                       Last opp ekte bilder ved å erstatte emoji-plassholderne 📷
                     </p>
                   </div>
@@ -228,8 +228,8 @@ const ProtectedContent = ({ onLogout }: ProtectedContentProps) => {
         </div>
 
         {/* Stats section with Christmas theme */}
-        <div className="mt-20 pt-20 border-t border-border/30">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+        <div className="mt-12 sm:mt-20 pt-12 sm:pt-20 border-t border-border/30">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8 max-w-4xl mx-auto">
             {[
               { value: "🎁", label: "Gaver" },
               { value: "🍪", label: "Pepperkaker" },
@@ -241,10 +241,10 @@ const ProtectedContent = ({ onLogout }: ProtectedContentProps) => {
                 className="text-center opacity-0 animate-fade-in"
                 style={{ animationDelay: `${1.1 + index * 0.1}s` }}
               >
-                <div className="text-5xl mb-3">
+                <div className="text-3xl sm:text-5xl mb-2 sm:mb-3">
                   {stat.value}
                 </div>
-                <div className="text-muted-foreground text-sm tracking-wide uppercase">
+                <div className="text-muted-foreground text-xs sm:text-sm tracking-wide uppercase">
                   {stat.label}
                 </div>
               </div>
@@ -254,9 +254,9 @@ const ProtectedContent = ({ onLogout }: ProtectedContentProps) => {
       </main>
 
       {/* Footer */}
-      <footer className="relative z-10 border-t border-border/30 mt-20">
-        <div className="container mx-auto px-4 py-8 text-center">
-          <p className="text-muted-foreground/60 text-sm">
+      <footer className="relative z-10 border-t border-border/30 mt-12 sm:mt-20">
+        <div className="container mx-auto px-3 sm:px-4 py-6 sm:py-8 text-center">
+          <p className="text-muted-foreground/60 text-xs sm:text-sm">
             🎄 God Jul og Godt Nyttår 2024! 🎅
           </p>
         </div>
