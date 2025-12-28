@@ -1,7 +1,7 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, AlertCircle, Volume2, VolumeX } from "lucide-react";
+import { ArrowRight, AlertCircle } from "lucide-react";
 import Snowfall from "./Snowfall";
 
 interface AccessGateProps {
@@ -14,15 +14,6 @@ const AccessGate = ({ onAccessGranted }: AccessGateProps) => {
   const [code, setCode] = useState("");
   const [error, setError] = useState(false);
   const [isShaking, setIsShaking] = useState(false);
-  const [isMuted, setIsMuted] = useState(true);
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  const toggleMute = () => {
-    if (videoRef.current) {
-      videoRef.current.muted = !videoRef.current.muted;
-      setIsMuted(!isMuted);
-    }
-  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -40,40 +31,20 @@ const AccessGate = ({ onAccessGranted }: AccessGateProps) => {
 
   return (
     <div className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      {/* Video Background */}
-      <video
-        ref={videoRef}
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover"
-      >
-        <source src="/videos/christmas-background.mp4" type="video/mp4" />
-      </video>
-      
-      {/* Dark overlay for better text readability */}
-      <div className="absolute inset-0 bg-black/50" />
-      
       <Snowfall />
       
-      {/* Mute/Unmute button */}
-      <button
-        onClick={toggleMute}
-        className="absolute bottom-4 sm:bottom-8 right-4 sm:right-8 z-20 p-3 sm:p-4 rounded-full bg-background/20 backdrop-blur-sm border border-white/20 text-white hover:bg-background/30 transition-all duration-300"
-        aria-label={isMuted ? "Slå på lyd" : "Slå av lyd"}
-      >
-        {isMuted ? (
-          <VolumeX className="w-5 h-5 sm:w-6 sm:h-6" />
-        ) : (
-          <Volume2 className="w-5 h-5 sm:w-6 sm:h-6" />
-        )}
-      </button>
+      {/* Background effects */}
+      <div className="absolute inset-0 gradient-festive" />
+      <div className="absolute top-1/4 left-1/4 w-[300px] h-[300px] sm:w-[600px] sm:h-[600px] bg-primary/10 rounded-full blur-[100px] sm:blur-[150px]" />
+      <div className="absolute bottom-1/4 right-1/4 w-[250px] h-[250px] sm:w-[500px] sm:h-[500px] bg-accent/10 rounded-full blur-[80px] sm:blur-[120px]" />
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-accent/30 to-transparent" />
       
       {/* Christmas decorations - smaller on mobile */}
-      <div className="absolute top-4 sm:top-8 left-4 sm:left-8 text-2xl sm:text-4xl opacity-80 animate-pulse z-10">🎄</div>
-      <div className="absolute top-4 sm:top-8 right-4 sm:right-8 text-2xl sm:text-4xl opacity-80 animate-pulse z-10" style={{ animationDelay: '0.5s' }}>🎅</div>
-      <div className="absolute bottom-4 sm:bottom-8 left-4 sm:left-8 text-xl sm:text-3xl opacity-70 z-10">🎁</div>
+      <div className="absolute top-4 sm:top-8 left-4 sm:left-8 text-2xl sm:text-4xl opacity-80 animate-pulse">🎄</div>
+      <div className="absolute top-4 sm:top-8 right-4 sm:right-8 text-2xl sm:text-4xl opacity-80 animate-pulse" style={{ animationDelay: '0.5s' }}>🎅</div>
+      <div className="absolute bottom-4 sm:bottom-8 left-4 sm:left-8 text-xl sm:text-3xl opacity-70">🎁</div>
+      <div className="absolute bottom-4 sm:bottom-8 right-4 sm:right-8 text-xl sm:text-3xl opacity-70">⭐</div>
       
       {/* Content */}
       <div 
@@ -135,11 +106,11 @@ const AccessGate = ({ onAccessGranted }: AccessGateProps) => {
           </p>
         </div>
 
-        {/* Decorative corners with Christmas colors - hidden on very small screens */}
-        <div className="absolute -top-3 -left-3 sm:-top-4 sm:-left-4 w-6 h-6 sm:w-8 sm:h-8 border-l-2 border-t-2 border-primary/50 rounded-tl-lg hidden xs:block" />
-        <div className="absolute -top-3 -right-3 sm:-top-4 sm:-right-4 w-6 h-6 sm:w-8 sm:h-8 border-r-2 border-t-2 border-accent/50 rounded-tr-lg hidden xs:block" />
-        <div className="absolute -bottom-3 -left-3 sm:-bottom-4 sm:-left-4 w-6 h-6 sm:w-8 sm:h-8 border-l-2 border-b-2 border-accent/50 rounded-bl-lg hidden xs:block" />
-        <div className="absolute -bottom-3 -right-3 sm:-bottom-4 sm:-right-4 w-6 h-6 sm:w-8 sm:h-8 border-r-2 border-b-2 border-primary/50 rounded-br-lg hidden xs:block" />
+        {/* Decorative corners with Christmas colors */}
+        <div className="absolute -top-3 -left-3 sm:-top-4 sm:-left-4 w-6 h-6 sm:w-8 sm:h-8 border-l-2 border-t-2 border-primary/50 rounded-tl-lg hidden sm:block" />
+        <div className="absolute -top-3 -right-3 sm:-top-4 sm:-right-4 w-6 h-6 sm:w-8 sm:h-8 border-r-2 border-t-2 border-accent/50 rounded-tr-lg hidden sm:block" />
+        <div className="absolute -bottom-3 -left-3 sm:-bottom-4 sm:-left-4 w-6 h-6 sm:w-8 sm:h-8 border-l-2 border-b-2 border-accent/50 rounded-bl-lg hidden sm:block" />
+        <div className="absolute -bottom-3 -right-3 sm:-bottom-4 sm:-right-4 w-6 h-6 sm:w-8 sm:h-8 border-r-2 border-b-2 border-primary/50 rounded-br-lg hidden sm:block" />
       </div>
 
       {/* Shake animation */}
