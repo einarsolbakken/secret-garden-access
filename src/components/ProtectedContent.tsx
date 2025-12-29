@@ -72,7 +72,7 @@ const ProtectedContent = ({ onLogout }: ProtectedContentProps) => {
           <div className="container mx-auto px-3 sm:px-4 py-3 sm:py-4 flex items-center justify-between">
             <div className="flex items-center gap-2 sm:gap-3">
               <div className="text-2xl sm:text-3xl">🎄</div>
-              <span className="font-display text-lg sm:text-xl font-medium text-white">Julaften 2024</span>
+              <span className="font-display text-lg sm:text-xl font-medium text-white">Julebord 2026</span>
             </div>
             <Button
               variant="ghost"
@@ -96,11 +96,11 @@ const ProtectedContent = ({ onLogout }: ProtectedContentProps) => {
             
             <h1 className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-medium text-white mb-4 sm:mb-6 leading-tight drop-shadow-lg">
               Velkommen til
-              <span className="block text-primary drop-shadow-[0_0_30px_rgba(220,38,38,0.5)]">Julaften 2024 🎄</span>
+              <span className="block text-primary drop-shadow-[0_0_30px_rgba(220,38,38,0.5)]">Julebord 🎄</span>
             </h1>
             
             <p className="text-white/90 text-base sm:text-lg md:text-xl max-w-xl mx-auto leading-relaxed mb-8 drop-shadow-md">
-              Her er programmet for årets julefeiring med familien!
+              Lørdag 12. desember 2026
             </p>
           </div>
         </div>
@@ -318,7 +318,7 @@ const ProtectedContent = ({ onLogout }: ProtectedContentProps) => {
         <footer className="relative z-10 border-t border-border/30 mt-12 sm:mt-20">
           <div className="container mx-auto px-3 sm:px-4 py-6 sm:py-8 text-center">
             <p className="text-muted-foreground/60 text-xs sm:text-sm">
-              🎄 God Jul og Godt Nyttår 2024! 🎅
+              🎄 God Jul og Godt Nyttår 2026! 🎅
             </p>
           </div>
         </footer>
