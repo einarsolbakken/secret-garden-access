@@ -2,7 +2,6 @@ import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { LogOut, Gift, HelpCircle, Image, ChevronDown, X, Volume2, VolumeX, ChevronDownCircle } from "lucide-react";
 import Snowfall from "./Snowfall";
-import archiveTestImage from "@/assets/archive-test.jpg";
 
 interface ProtectedContentProps {
   onLogout: () => void;
@@ -32,10 +31,9 @@ const ProtectedContent = ({ onLogout }: ProtectedContentProps) => {
     { q: "Når er det greit å gå hjem?", a: "Feiringen varer så lenge vi har det gøy sammen!" },
   ];
 
-  const archiveImages: (string | { type: 'image'; src: string })[] = [
-    { type: 'image', src: archiveTestImage },
+  const archiveImages = [
     "🎄", "🎁", "🎅", "⛄", "🦌", "🌟", "🕯️", "🍪",
-    "❄️", "🔔", "🎀", "🧦", "🎿", "☃️", "🌲"
+    "❄️", "🔔", "🎀", "🧦", "🎿", "☃️", "🌲", "🍫"
   ];
 
   const timelineEvents = [
@@ -271,30 +269,12 @@ const ProtectedContent = ({ onLogout }: ProtectedContentProps) => {
                     <div>
                       <p className="text-muted-foreground mb-3 sm:mb-4 text-xs sm:text-sm">Minner fra julefeiringen i fjor:</p>
                       <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-2 sm:gap-3">
-                        {archiveImages.map((item, i) => (
+                        {archiveImages.map((emoji, i) => (
                           <div 
                             key={i} 
-                            className="aspect-square glass-card rounded-lg sm:rounded-xl flex items-center justify-center text-xl sm:text-3xl cursor-pointer bg-background/30 overflow-hidden group relative"
+                            className="aspect-square glass-card rounded-lg sm:rounded-xl flex items-center justify-center text-xl sm:text-3xl hover:scale-110 transition-transform cursor-pointer bg-background/30"
                           >
-                            {typeof item === 'object' && item.type === 'image' ? (
-                              <>
-                                <img 
-                                  src={item.src} 
-                                  alt={`Arkivbilde ${i + 1}`}
-                                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-150"
-                                />
-                                {/* Lightbox on hover */}
-                                <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-300">
-                                  <img 
-                                    src={item.src} 
-                                    alt={`Arkivbilde ${i + 1} forstørret`}
-                                    className="max-w-[90vw] max-h-[90vh] object-contain rounded-lg shadow-2xl"
-                                  />
-                                </div>
-                              </>
-                            ) : (
-                              <span className="hover:scale-110 transition-transform">{item as string}</span>
-                            )}
+                            {emoji}
                           </div>
                         ))}
                       </div>
