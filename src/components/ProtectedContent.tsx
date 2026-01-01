@@ -9,7 +9,7 @@ interface ProtectedContentProps {
 
 const ProtectedContent = ({ onLogout }: ProtectedContentProps) => {
   const [expandedCard, setExpandedCard] = useState<string | null>(null);
-  const [isMuted, setIsMuted] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const toggleMute = () => {
@@ -56,6 +56,7 @@ const ProtectedContent = ({ onLogout }: ProtectedContentProps) => {
           autoPlay
           loop
           playsInline
+          muted
           className="absolute inset-0 w-full h-full object-cover"
         >
           <source src="/videos/christmas-background.mp4" type="video/mp4" />
